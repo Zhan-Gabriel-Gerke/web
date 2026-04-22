@@ -37,7 +37,7 @@ router.get('/dates', (req, res) => {
     {
       id: 1,
       date: '2026-04-21',
-      description: 'Today',
+      description: 'AAAAA',
     },
     {
       id: 2,
@@ -62,11 +62,14 @@ router.get('/dates', (req, res) => {
     {
       id: 6,
       data: '2026-04-22',
-    description: 'Hello from Mcdonals'
+      description: 'Hello from Mcdonals'
     }
   ];
 
   res.status(200).json(dates);
 });
+
+module.exports = router;
+
 
 module.exports = router;

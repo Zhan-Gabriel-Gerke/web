@@ -27,7 +27,7 @@ describe('DatesComponent', () => {
 
   it('should load dates on initialization', () => {
     const mockDates = [
-      { id: 1, date: '2026-04-21', description: 'Today' },
+      { id: 1, date: '2026-04-21', description: 'Today', some_cool_info: 'AAA' },
     ];
     spyOn(datesService, 'getDates').and.returnValue(of(mockDates));
 
