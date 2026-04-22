@@ -1,0 +1,39 @@
+<div class="monitors-container">
+    <h2>Monitors</h2>
+
+    <div *ngIf="loading" class="loading">
+        <p>Loading monitors...</p>
+    </div>
+
+    <div *ngIf="error" class="error">
+        <p>{{ error }}</p>
+        <button (click)="loadMonitors">Retry</button>
+    </div>
+
+    <div *ngIf="!loading && !error && monitors.length > 0" class="monitors-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Inc</th>
+                    <th>Screen Type</th>
+                    <th>Manufacture</th>
+                    <th>Hz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let monitor of monitors">
+                    <td>{{ monitor.id }}</td>
+                    <td>{{ monitor.inc }}</td>
+                    <td>{{ monitor.screen_type }}</td>
+                    <td>{{ monitor.manufacture }}</td>
+                    <td>{{ monitor.refresh_rate }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="!loading && monitors.length === 0 && !error" class="no-data">
+        <p>No monitors available</p>
+    </div>
+</div>

@@ -2,7 +2,6 @@ const express = require('express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
-const router = express.Router();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,8 +34,6 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use('/', router)
-
 // Routes
 const datesRoutes = require('./routes/dates');
 app.use('/api', datesRoutes);
@@ -44,13 +41,16 @@ app.use('/api', datesRoutes);
 const productRoutes = require('./routes/products');
 app.use('/api', productRoutes)
 
+const monitorRoutes = require('./routes/monitors');
+app.use('/api', monitorRoutes)
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
@@ -62,4 +62,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-module.exports = router;
