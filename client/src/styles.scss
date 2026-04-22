@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f0f2f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}

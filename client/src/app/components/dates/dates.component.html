@@ -1,0 +1,35 @@
+<div class="dates-container">
+  <h2>Upcoming Dates</h2>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading dates...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="loadDates()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error && dates.length > 0" class="dates-list">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let date of dates">
+          <td>{{ date.id }}</td>
+          <td>{{ date.date }}</td>
+          <td>{{ date.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && dates.length === 0 && !error" class="no-data">
+    <p>No dates available</p>
+  </div>
+</div>
