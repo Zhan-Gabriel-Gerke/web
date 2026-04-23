@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DatesComponent } from './components/dates/dates.component';
 import { ProductsComponent } from './components/products/product.component';
 import { MonitorComponent } from './components/monitors/monitor.component';
+import { CartComponent } from './components/cart/cart.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    CartComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
