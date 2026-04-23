@@ -6,14 +6,17 @@ router.get('/products', (req, res) => {
     {
       id: 1,
       name: "Cheess",
+      price: 4.44
     },
     {
       id: 2,
-      name: "Dip"
+      name: "Dip",
+      price: 1.1
     },
     {
       id: 3,
-      name: "Bun"
+      name: "Bun",
+      price: 0.2
     }
   ];
   
