@@ -61,7 +61,7 @@ router.get('/dates', (req, res) => {
     },
     {
       id: 6,
-      data: '2026-04-22',
+      date: '2026-04-22',
       description: 'Hello from Mcdonals'
     }
   ];

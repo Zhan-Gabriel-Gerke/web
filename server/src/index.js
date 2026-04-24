@@ -3,6 +3,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
@@ -20,9 +21,9 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Dates API',
+      title: 'Web Project API',
       version: '1.0.0',
-      description: 'API to retrieve a list of dates',
+      description: 'API for Dates, Products, and Monitors',
     },
     servers: [
       {
@@ -31,7 +32,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./src/routes/*.js'],
+  apis: [path.join(__dirname, 'routes', '*.js'), __filename],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -49,13 +50,22 @@ app.use('/api', productRoutes)
 const monitorRoutes = require('./routes/monitors');
 app.use('/api', monitorRoutes)
 
-// Health check endpoint
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Health check
+ *     tags: [System]
+ *     responses:
+ *       200:
+ *         description: Server is healthy
+ */
 app.get('/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
 // Error handling middleware
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });

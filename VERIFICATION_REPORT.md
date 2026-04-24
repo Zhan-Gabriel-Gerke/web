@@ -157,7 +157,7 @@ Successfully scaffolded and deployed a complete full-stack application with:
   - Hover effects on rows
   - Loading state with spinner message
   - Error message with retry button
-  - Empty state message when no dates available
+  - Empty state message when no dates availableа
 
 ### Styling
 - Professional blue color scheme (#007bff)
