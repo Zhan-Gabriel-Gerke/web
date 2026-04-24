@@ -41,14 +41,15 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
-const datesRoutes = require('./routes/dates');
-app.use('/api', datesRoutes);
 
 const productRoutes = require('./routes/products');
 app.use('/api', productRoutes)
 
 const monitorRoutes = require('./routes/monitors');
 app.use('/api', monitorRoutes)
+
+const orderRoutes = require('./routes/orders');
+app.use('/api', orderRoutes)
 
 /**
  * @swagger

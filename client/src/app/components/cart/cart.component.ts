@@ -11,6 +11,7 @@ import { CartService, CartItem } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   public cart: CartItem[] = [];
+  error: string | null = null;
 
   constructor(private cartService: CartService) {}
 
@@ -39,5 +40,18 @@ export class CartComponent implements OnInit {
 
   getTotalItems(): number {
     return this.cartService.getTotalItems();
+  }
+
+  checkout(): void {
+    this.cartService.checkout().subscribe({
+      next: () => {
+        alert('Order placed successfully!');
+        this.cartService.clearCart();
+      },
+      error: (err: any) => {
+        this.error = 'Failed to place order'; 
+        console.error("Error from checkout", err);
+      },
+    })
   }
 }

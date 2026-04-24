@@ -19,7 +19,7 @@
       <tbody>
         <tr *ngFor="let item of cart">
           <td>{{ item.name }}</td>
-          <td>${{ item.price }}</td>
+          <td>{{ item.price | currency }}</td>
           <td>
             <input
               type="number"
@@ -27,7 +27,7 @@
               [value]="item.quantity"
               (change)="updateQuantity(item._id, $any($event.target).value)">
           </td>
-          <td>${{ (item.price * item.quantity).toFixed(2) }}</td>
+          <td>{{ (item.price * item.quantity) | currency }}</td>
           <td>
             <button (click)="removeItem(item._id)" class="btn-remove">Remove</button>
           </td>
@@ -40,12 +40,14 @@
         <span>Total Items:</span>
         <strong>{{ getTotalItems() }}</strong>
       </div>
-      <div class="summary-row">
+      <div class="summary-row total">
         <span>Total Price:</span>
-        <strong>${{ getTotalPrice().toFixed(2) }}</strong>
+        <strong>{{ getTotalPrice() | currency }}</strong>
       </div>
     </div>
 
+    <button (click)="checkout()" class="btn-checkout">Checkout</button>
+    <br />
     <button (click)="clearCart()" class="btn-clear">Clear Cart</button>
   </div>
 </div>

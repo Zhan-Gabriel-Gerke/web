@@ -19,91 +19,145 @@
 
   .cart-list {
     overflow-x: auto;
+    margin-top: 25px;
 
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
 
       thead {
-        background-color: #007bff;
+        background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
         color: white;
       }
 
-      th,
-      td {
-        padding: 12px;
+      th {
+        padding: 18px 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
         text-align: left;
-        border-bottom: 1px solid #ddd;
       }
 
-      tbody tr {
-        &:hover {
-          background-color: #f5f5f5;
-        }
+      td {
+        padding: 20px;
+        text-align: left;
+        border-bottom: 1px solid #f0f2f5;
+        color: #4a5568;
+        vertical-align: middle;
       }
 
       input[type='number'] {
-        width: 60px;
-        padding: 5px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
+        width: 70px;
+        padding: 8px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
         text-align: center;
+        font-weight: 600;
+        color: #2d3748;
+        outline: none;
+        transition: border-color 0.2s;
+
+        &:focus {
+          border-color: #007bff;
+        }
       }
     }
 
     .btn-remove {
-      padding: 6px 12px;
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      border-radius: 3px;
+      padding: 8px 16px;
+      background-color: #fff5f5;
+      color: #e53e3e;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.2s;
 
       &:hover {
-        background-color: #c82333;
+        background-color: #e53e3e;
+        color: white;
+        border-color: #e53e3e;
       }
     }
   }
 
   .cart-summary {
-    background-color: #f5f5f5;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    max-width: 400px;
+    margin-left: auto;
 
     .summary-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
-      font-size: 16px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      color: #718096;
 
-      &:last-child {
-        margin-bottom: 0;
-        padding-top: 10px;
-        border-top: 2px solid #ddd;
-      }
+      &.total {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px solid #edf2f7;
+        color: #2d3748;
+        font-size: 1.25rem;
 
-      strong {
-        color: #007bff;
-        font-size: 18px;
+        strong {
+          color: #007bff;
+          font-weight: 800;
+        }
       }
+    }
+  }
+  
+  .btn-checkout {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: block;
+    margin-left: auto;
+    box-shadow: 0 4px 12px rgba(74, 85, 104, 0.2);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(74, 85, 104, 0.3);
+      filter: brightness(1.1);
     }
   }
 
   .btn-clear {
-    padding: 10px 20px;
-    background-color: #6c757d;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: block;
+    margin-left: auto;
+    box-shadow: 0 4px 12px rgba(74, 85, 104, 0.2);
 
     &:hover {
-      background-color: #5a6268;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(74, 85, 104, 0.3);
+      filter: brightness(1.1);
     }
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ProductItem } from './product.service';
-import { CartComponent } from '../components/cart/cart.component';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface CartItem extends ProductItem {
   quantity: number;
@@ -14,7 +15,9 @@ export class CartService {
   private cartItems = new BehaviorSubject<CartItem[]>([]);
   public cart$ = this.cartItems.asObservable();
 
-  constructor() {}
+  private apiUrl = 'http://localhost:3000/api/orders';
+
+  constructor(private http: HttpClient) {}
 
   getCart(): CartItem[] {
     return this.cartItems.value;
@@ -62,5 +65,13 @@ export class CartService {
 
   getTotalItems(): number {
     return this.cartItems.value.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  checkout(): Observable<any> {
+    const orderData = {
+      totalPrice: this.getTotalPrice(),
+      products: this.cartItems.value
+    };
+    return this.http.post(this.apiUrl, orderData);
   }
 }

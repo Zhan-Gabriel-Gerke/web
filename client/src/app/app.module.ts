@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { DatesComponent } from './components/dates/dates.component';
 import { ProductsComponent } from './components/products/product.component';
 import { MonitorComponent } from './components/monitors/monitor.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -12,7 +11,7 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, DatesComponent, ProductsComponent, MonitorComponent, AdminProductsComponent],
+  declarations: [AppComponent, ProductsComponent, MonitorComponent, AdminProductsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

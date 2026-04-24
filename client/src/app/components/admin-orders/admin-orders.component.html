@@ -1,0 +1,59 @@
+<div class="admin-orders-container">
+  <div class="header-section">
+    <h2>Manage Orders</h2>
+  </div>
+
+  <div *ngIf="error" class="error-banner">
+    <p>{{ error }}</p>
+    <button (click)="error = null">Dismiss</button>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading orders...</p>
+  </div>
+
+  <div *ngIf="!loading && orders.length > 0" class="orders-table-wrapper">
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Products</th>
+          <th>Total Amount</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td><span class="order-id">{{ order._id }}</span></td>
+          <td>{{ order.createdAt | date:'short' }}</td>
+          <td>
+            <ul class="product-mini-list">
+              <li *ngFor="let item of order.products">
+                {{ item.name }} (x{{ item.quantity }})
+              </li>
+            </ul>
+          </td>
+          <td class="total-price">{{ order.totalPrice | currency }}</td>
+          <td>
+            <span class="status-badge" [class]="order.status">
+              {{ order.status }}
+            </span>
+          </td>
+          <td>
+            <button (click)="deleteOrder(order._id)" class="btn-delete" title="Delete Order">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="empty-state">
+    <div class="empty-icon">📦</div>
+    <p>No orders have been placed yet.</p>
+  </div>
+</div>

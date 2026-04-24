@@ -24,7 +24,7 @@
         <tr *ngFor="let product of products">
           <td>{{ product._id }}</td>
           <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
+          <td>{{ product.price | currency }}</td>
           <td><button class="cart_button" (click)="addToCart(product)">Add to Cart</button></td>
         </tr>
       </tbody>

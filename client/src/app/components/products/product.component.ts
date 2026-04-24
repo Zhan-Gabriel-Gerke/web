@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
         this.products = data;
         this.loading = false;
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = 'Failed to load products from API';
         this.loading = false;
         console.error('Error fetching products:', err);
