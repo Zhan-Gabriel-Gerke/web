@@ -3,10 +3,10 @@ const router = express.Router();
 
 /**
  * @swagger
- * /dates:
+ * /api/dates:
  *   get:
  *     summary: Get list of dates
- *     description: Returns a list of dates with descriptions
+ *     tags: [Dates]
  *     responses:
  *       200:
  *         description: Successful response

@@ -1,6 +1,50 @@
 const express = require("express");
 const router = express.Router();
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Monitor:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           example: 1
+ *         inc:
+ *           type: number
+ *           description: Screen size in inches
+ *           example: 27
+ *         screen_type:
+ *           type: string
+ *           example: IPS
+ *         manufacture:
+ *           type: string
+ *           example: LG
+ *         refresh_rate:
+ *           type: integer
+ *           example: 144
+ *         is_curved:
+ *           type: boolean
+ *           example: false
+ */
+
+/**
+ * @swagger
+ * /api/monitors:
+ *   get:
+ *     summary: Get all monitors
+ *     tags: [Monitors]
+ *     responses:
+ *       200:
+ *         description: List of monitors
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Monitor'
+ */
 router.get('/monitors', (req, res) => {
     const monitors = [
         {
