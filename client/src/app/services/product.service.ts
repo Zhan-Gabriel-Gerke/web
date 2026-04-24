@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface ProductItem {
-  id: number;
+  _id: string;
   name: string;
-  price: string;
+  price: number;
 }
 
 @Injectable({
@@ -18,5 +18,17 @@ export class ProductsService {
 
   getProducts(): Observable<ProductItem[]> {
     return this.http.get<ProductItem[]>(this.apiUrl);
+  }
+
+  addProduct(product: { name: string; price: number }): Observable<ProductItem> {
+    return this.http.post<ProductItem>(this.apiUrl, product);
+  }
+
+  updateProduct(id: string, product: { name: string; price: number }): Observable<ProductItem> {
+    return this.http.put<ProductItem>(`${this.apiUrl}/${id}`, product);
+  }
+
+  deleteProduct(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

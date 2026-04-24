@@ -8,10 +8,11 @@ import { DatesComponent } from './components/dates/dates.component';
 import { ProductsComponent } from './components/products/product.component';
 import { MonitorComponent } from './components/monitors/monitor.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, DatesComponent, ProductsComponent, MonitorComponent],
+  declarations: [AppComponent, DatesComponent, ProductsComponent, MonitorComponent, AdminProductsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

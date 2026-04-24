@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductItem } from 'src/app/services/product.service';
 import { CartService, CartItem } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { CartService, CartItem } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   public cart: CartItem[] = [];
-  
+
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -21,11 +20,11 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeItem(productId: number): void {
+  removeItem(productId: string): void {
     this.cartService.removeFromCart(productId);
   }
 
-  updateQuantity(productId: number, quantity: any): void {
+  updateQuantity(productId: string, quantity: any): void {
     const qty = parseInt(quantity, 10);
     this.cartService.updateQuantity(productId, qty);
   }
@@ -40,9 +39,5 @@ export class CartComponent implements OnInit {
 
   getTotalItems(): number {
     return this.cartService.getTotalItems();
-  }
-
-  parseFloat(value: string): number {
-    return parseFloat(value);
   }
 }
