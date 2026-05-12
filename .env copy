@@ -1,0 +1,6 @@
+NODE_ENV=development
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=super_secret_password_123
+DATABASE_URL=mongodb://admin:super_secret_password_123@mongo:27017/shop?authSource=admin
+JWT_SECRET=super_secret_key
+PORT=3000

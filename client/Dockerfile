@@ -2,15 +2,13 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm ci 
 COPY . .
 RUN npm run build --configuration=production
 
 # Stage 2: Production
 FROM nginx:stable-alpine
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist/client/browser /usr/share/nginx/html
-# Custom nginx config is MANDATORY for Angular routing
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/client/browser /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
