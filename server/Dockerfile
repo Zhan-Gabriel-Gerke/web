@@ -9,8 +9,9 @@ RUN npm run build
 # Stage 2: Runtime
 FROM node:20-alpine
 WORKDIR /app
+RUN chown -R node:node /app
 USER node
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 RUN npm ci --omit=dev
 COPY --from=builder --chown=node:node /app/dist ./dist
 EXPOSE 3000
